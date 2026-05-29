@@ -67,6 +67,15 @@ Figures are written to:
 results/figures/
 ```
 
+## Analyze Jakarta Corridor Speeds
+
+```bash
+python scripts/analyze_jakarta.py
+```
+
+This cleans the downloaded Satu Data Jakarta corridor-speed CSV and creates a
+simple bottleneck ranking plus summary figures.
+
 ## Run Dashboard
 
 ```bash

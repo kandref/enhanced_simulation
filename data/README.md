@@ -1,8 +1,8 @@
 # Data Plan
 
-The repository currently includes source metadata and an analysis plan, not raw
-Jakarta datasets. Raw files should be added only when their license and format
-are clear.
+The repository now includes one raw Jakarta corridor-speed dataset downloaded
+from Satu Data Jakarta/Data.go.id. Other candidate sources remain in the data
+plan until their files are inspected.
 
 ## Candidate Sources
 
@@ -10,7 +10,7 @@ are clear.
 | --- | --- | --- | --- |
 | Vehicle demand | BPS DKI Jakarta registered vehicles by city and type, 2024 | Identified | Demand pressure and vehicle composition |
 | Road context | BPS Land Transportation Statistics 2024 | Identified | Road length and transport context |
-| Corridor speed | Satu Data/Jakarta 41 peak-hour corridors | Identified | Bottleneck and speed ranking |
+| Corridor speed | Satu Data/Jakarta 41 peak-hour corridors | Downloaded | Bottleneck and speed ranking |
 | Corridor example | Mendeley Thamrin traffic and emission data | Identified | Corridor-level traffic example |
 | Global context | TomTom Traffic Index Jakarta | Identified | External congestion benchmark |
 
@@ -19,12 +19,30 @@ are clear.
 ```text
 data/
   raw/
-    bps_dki_registered_vehicles_2024.csv
     jakarta_41_corridor_peak_speed.csv
+    bps_dki_registered_vehicles_2024.csv
     thamrin_traffic_emission_2024/
   processed/
     jakarta_corridor_speed_clean.csv
     jakarta_vehicle_pressure_summary.csv
+```
+
+## Current Data Product
+
+Run:
+
+```bash
+python scripts/analyze_jakarta.py
+```
+
+Generated files:
+
+```text
+data/processed/jakarta_corridor_peak_speed_clean.csv
+data/processed/jakarta_corridor_bottleneck_ranking.csv
+data/processed/jakarta_corridor_monthly_speed_summary.csv
+results/figures/jakarta_slowest_corridors.png
+results/figures/jakarta_monthly_peak_speed.png
 ```
 
 ## Minimum Fields Needed
